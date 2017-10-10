@@ -18,8 +18,7 @@ func main() {
 	mess.MessageReceived = MessageReceived
 	http.HandleFunc("/webhook", mess.Handler)
 	mess.SendSimpleMessage("1460870680701162", fmt.Sprintf("如果你看到這個，\n就代表我成功主動傳送訊息囉！"))
-	button := NewWebURLButton("點此看阿卡莉", "https://www.pixiv.net/member_illust.php?mode=medium&illust_id=62861397")
-	mess.SendMessage("1460870680701162", button)
+	mess.SendSimpleMessage("1460870680701162", NewWebURLButton("點此看阿卡莉", "https://www.pixiv.net/member_illust.php?mode=medium&illust_id=62861397"))
 	log.Fatal(http.ListenAndServe(":"+port, nil))
 }
 
