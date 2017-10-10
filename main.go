@@ -7,6 +7,7 @@ import (
 	"os"
 
 	"github.com/maciekmm/messenger-platform-go-sdk"
+	"github.com/maciekmm/messenger-platform-go-sdk/template"
 )
 
 var mess = &messenger.Messenger{}
@@ -21,7 +22,7 @@ func main() {
 		handler := func(event messenger.Event, opts messenger.MessageOpts, msg messenger.ReceivedMessage) {
 			mq := messenger.MessageQuery{}
 			mq.RecipientID(opts.Sender.ID)
-			mq.Template(template.GenericTemplate{Title: "abc",
+			mq.Template(template.GenericTemplate {Title: "abc",
 				Buttons: []template.Button{
 					template.Button{
 						Type:    template.ButtonTypePostback,
