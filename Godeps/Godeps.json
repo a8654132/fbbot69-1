@@ -1,17 +1,9 @@
 {
-	"ImportPath": "fbbot69",
-	"GoVersion": "go1.8",
-	"GodepVersion": "v79",
-	"Deps": [
-		{
-			"ImportPath": "github.com/garyburd/redigo/internal",
-			"Comment": "v1.1.0-10-g70e1b19",
-			"Rev": "70e1b1943d4fc9c56791abaa6f4d1e727b9ab925"
-		},
-		{
-			"ImportPath": "github.com/garyburd/redigo/redis",
-			"Comment": "v1.1.0-10-g70e1b19",
-			"Rev": "70e1b1943d4fc9c56791abaa6f4d1e727b9ab925"
-		}
-	]
+	"ImportPath": "github.com/kkdai/FBBotTemplate",
+	"GoVersion": "go1.6",
+	"GodepVersion": "v74",
+	"Packages": [
+		"./..."
+	],
+	"Deps": []
 }
