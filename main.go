@@ -19,25 +19,7 @@ func main() {
 	mess.AccessToken = os.Getenv("TOKEN")
 	log.Println("Bot start in token:", mess.VerifyToken)
 
-		handler := func(event messenger.Event, opts messenger.MessageOpts, msg messenger.ReceivedMessage) {
-			mq := messenger.MessageQuery{}
-			mq.RecipientID(opts.Sender.ID)
-			mq.Template(template.GenericTemplate {Title: "abc",
-				Buttons: []template.Button{
-					template.Button{
-						Type:    template.ButtonTypePostback,
-						Payload: "test",
-						Title:   "abcde",
-					},
-				},
-			})
-			resp, err := mess.SendMessage(mq)
-			if err != nil {
-				fmt.Println(err)
-			}
-			fmt.Printf("%+v", resp)
-		}
-		mess.MessageReceived = handler
+	mess.MessageReceived = handler
 
 	http.HandleFunc("/webhook", mess.Handler)
 	mess.SendSimpleMessage("1460870680701162", fmt.Sprintf("如果你看到這個，\n就代表我成功主動傳送訊息囉！"))
@@ -46,7 +28,27 @@ func main() {
 	log.Fatal(http.ListenAndServe(":"+port, nil))
 }
 
-//MessageReceived :Callback to handle when message received.
+
+func handler(event messenger.Event, opts messenger.MessageOpts, msg messenger.ReceivedMessage) {
+		mq := messenger.MessageQuery{}
+		mq.RecipientID("1460870680701162")
+		mq.Template(template.GenericTemplate {Title: "abc",
+			Buttons: []template.Button{
+				template.Button{
+					Type:    template.ButtonTypePostback,
+					Payload: "test",
+					Title:   "abcde",
+				},
+			},
+		})
+		resp, err := mess.SendMessage(mq)
+		if err != nil {
+			fmt.Println(err)
+		}
+		fmt.Printf("%+v", resp)
+	}
+// 
+//   // MessageReceived :Callback to handle when message received.
 // func MessageReceived(event Event, opts MessageOpts, msg ReceivedMessage) {
 // 	// log.Println("event:", event, " opt:", opts, " msg:", msg)
 // 	resp, err := mess.SendSimpleMessage(opts.Sender.ID, fmt.Sprintf("你好，現在是被動的回復訊息。\n你的ID為%s\n你剛剛說的話為：%s", opts.Sender.ID ,msg.Text))
