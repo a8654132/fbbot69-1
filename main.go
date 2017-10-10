@@ -18,11 +18,11 @@ func main() {
 	mess.VerifyToken = os.Getenv("TOKEN")
 	mess.AccessToken = os.Getenv("TOKEN")
 	log.Println("Bot start in token:", mess.VerifyToken)
-
+	mess.SendSimpleMessage("1460870680701162", fmt.Sprintf("如果你看到這個，\n就代表我成功主動傳送訊息囉！"))
 	mess.MessageReceived = handler
 
 	http.HandleFunc("/webhook", mess.Handler)
-	mess.SendSimpleMessage("1460870680701162", fmt.Sprintf("如果你看到這個，\n就代表我成功主動傳送訊息囉！"))
+
 	// button := NewWebURLButton("點此看阿卡莉", "https://www.pixiv.net/member_illust.php?mode=medium&illust_id=62861397")
 	// mess.SendSimpleMessage("1460870680701162", button)
 	log.Fatal(http.ListenAndServe(":"+port, nil))
@@ -47,7 +47,7 @@ func handler(event messenger.Event, opts messenger.MessageOpts, msg messenger.Re
 		}
 		fmt.Printf("%+v", resp)
 	}
-// 
+//
 //   // MessageReceived :Callback to handle when message received.
 // func MessageReceived(event Event, opts MessageOpts, msg ReceivedMessage) {
 // 	// log.Println("event:", event, " opt:", opts, " msg:", msg)
