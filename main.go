@@ -17,16 +17,18 @@ func main() {
 	log.Println("Bot start in token:", mess.VerifyToken)
 	mess.MessageReceived = MessageReceived
 	http.HandleFunc("/webhook", mess.Handler)
-
-  mess.SendSimpleMessage("1460870680701162", fmt.Sprintf("主動傳送訊息!"))
-
 	log.Fatal(http.ListenAndServe(":"+port, nil))
 }
 
 //MessageReceived :Callback to handle when message received.
 func MessageReceived(event Event, opts MessageOpts, msg ReceivedMessage) {
 	// log.Println("event:", event, " opt:", opts, " msg:", msg)
-	resp, err := mess.SendSimpleMessage(opts.Sender.ID, fmt.Sprintf("你好,現在是被動的,%s,%s", opts.Sender.ID ,msg.Text))
+	profile, err := mess.GetProfile(opts.Sender.ID)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	resp, err := mess.SendSimpleMessage(opts.Sender.ID, fmt.Sprintf("Hello   , %s %s, %s", profile.FirstName, profile.LastName, msg.Text))
 	if err != nil {
 		fmt.Println(err)
 	}
