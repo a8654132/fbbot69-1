@@ -5,6 +5,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"template"
 )
 
 var mess = &Messenger{}
@@ -18,7 +19,7 @@ func main() {
 	mess.MessageReceived = MessageReceived
 	http.HandleFunc("/webhook", mess.Handler)
 	mess.SendSimpleMessage("1460870680701162", fmt.Sprintf("如果你看到這個，\n就代表我成功主動傳送訊息囉！"))
-	button := NewWebURLButton("點此看阿卡莉", "https://www.pixiv.net/member_illust.php?mode=medium&illust_id=62861397")
+	button := template.NewWebURLButton("點此看阿卡莉", "https://www.pixiv.net/member_illust.php?mode=medium&illust_id=62861397")
 	mess.SendSimpleMessage("1460870680701162", button)
 	log.Fatal(http.ListenAndServe(":"+port, nil))
 }
