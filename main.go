@@ -5,7 +5,6 @@ import (
 	"log"
 	"net/http"
 	"os"
-	"template"
 )
 
 var mess = &Messenger{}
