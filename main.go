@@ -26,7 +26,7 @@ func main() {
 					template.Button{
 						Type:    template.ButtonTypePostback,
 						Payload: "test",
-						Title:   "abecadło",
+						Title:   "abcde",
 					},
 				},
 			})
