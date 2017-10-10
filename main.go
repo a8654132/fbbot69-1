@@ -36,7 +36,7 @@ func main() {
 func MessageReceived(event Event, opts MessageOpts, msg ReceivedMessage) {
 	mq := MessageQuery{}
 	mq.RecipientID(opts.Sender.ID)
-	mq.Template(template.GenericTemplate{Title: "abc",
+	mq.Template(GenericTemplate{Title: "abc",
 		Buttons: []template.Button{
 			template.Button{
 				Type:    template.ButtonTypePostback,
