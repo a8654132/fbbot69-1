@@ -1,9 +1,17 @@
 {
-	"ImportPath": "github.com/kkdai/FBBotTemplate",
-	"GoVersion": "go1.6",
-	"GodepVersion": "v74",
-	"Packages": [
-		"./..."
-	],
-	"Deps": []
+	"ImportPath": "fbbot69-1",
+	"GoVersion": "go1.8",
+	"GodepVersion": "v79",
+	"Deps": [
+		{
+			"ImportPath": "github.com/maciekmm/messenger-platform-go-sdk",
+			"Comment": "v4.5-17-g8dfac18",
+			"Rev": "8dfac18d22ba6ba764b9264a07eb0ffeb21762fc"
+		},
+		{
+			"ImportPath": "github.com/maciekmm/messenger-platform-go-sdk/template",
+			"Comment": "v4.5-17-g8dfac18",
+			"Rev": "8dfac18d22ba6ba764b9264a07eb0ffeb21762fc"
+		}
+	]
 }
