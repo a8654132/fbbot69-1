@@ -5,6 +5,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"template"
 )
 
 var mess = &Messenger{}
@@ -36,7 +37,7 @@ func main() {
 func MessageReceived(event Event, opts MessageOpts, msg ReceivedMessage) {
 	mq := MessageQuery{}
 	mq.RecipientID(opts.Sender.ID)
-	mq.Template(GenericTemplate{Title: "abc",
+	mq.Template(template.GenericTemplate{Title: "abc",
 		Buttons: []template.Button{
 			template.Button{
 				Type:    template.ButtonTypePostback,
