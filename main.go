@@ -18,9 +18,7 @@ func main() {
 	mess.MessageReceived = MessageReceived
 	http.HandleFunc("/webhook", mess.Handler)
 
-	for i:=0 ; i<5 ; i++ {
-  	mess.SendSimpleMessage("1460870680701162", fmt.Sprintf("第%d次主動傳送訊息",i+1))
-	}
+  mess.SendSimpleMessage("1460870680701162", fmt.Sprintf("第%d次主動傳送訊息",i+1))
 
 	log.Fatal(http.ListenAndServe(":"+port, nil))
 }
