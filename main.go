@@ -32,9 +32,9 @@ func main() {
 
 func MessageReceived(event messenger.Event, opts messenger.MessageOpts, msg messenger.ReceivedMessage) {
 		mq := messenger.MessageQuery{}
-		mq.RecipientID("1460870680701162")
+		mq.RecipientID(opts.Sender.ID)
 		mq.Template(template.GenericTemplate {Title: "abc",
-			Buttons: NewWebURLButton("點此看阿卡莉", "https://www.pixiv.net/member_illust.php?mode=medium&illust_id=62861397")
+			Buttons: NewWebURLButton("點此看阿卡莉", "https://www.pixiv.net/member_illust.php?mode=medium&illust_id=62861397"),
 			}
 		)
 		resp, err := mess.SendMessage(mq)
