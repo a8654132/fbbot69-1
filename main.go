@@ -32,10 +32,16 @@ func main() {
 
 func MessageReceived(event messenger.Event, opts messenger.MessageOpts, msg messenger.ReceivedMessage) {
 		mq := messenger.MessageQuery{}
-		button := []template.NewWebURLButton("點此看阿卡莉", "https://www.pixiv.net/member_illust.php?mode=medium&illust_id=62861397")
+		// button := template.NewWebURLButton("點此看阿卡莉", "https://www.pixiv.net/member_illust.php?mode=medium&illust_id=62861397")
 		mq.RecipientID(opts.Sender.ID)
 		mq.Template(template.GenericTemplate {Title: "abc",
-			Buttons: button,
+			Buttons: []template.Button{
+				template.Button{
+					Type:    template.ButtonTypeWebURL,
+					Payload: "test",
+					Title:   "點此看阿卡莉",
+					URL:		 "https://www.pixiv.net/member_illust.php?mode=medium&illust_id=62861397"
+				},
 			})
 		resp, err := mess.SendMessage(mq)
 		if err != nil {
