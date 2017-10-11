@@ -64,7 +64,6 @@ func SendButton() {
 		})
 		mess.SendSimpleMessage("1460870680701162", onlyonecontent )
 		mess.SendMessage(mq)
-		fmt.Printf("%+v", resp)
 	}
 
 
