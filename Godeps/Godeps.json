@@ -4,6 +4,16 @@
 	"GodepVersion": "v79",
 	"Deps": [
 		{
+			"ImportPath": "github.com/garyburd/redigo/internal",
+			"Comment": "v1.1.0-10-g70e1b19",
+			"Rev": "70e1b1943d4fc9c56791abaa6f4d1e727b9ab925"
+		},
+		{
+			"ImportPath": "github.com/garyburd/redigo/redis",
+			"Comment": "v1.1.0-10-g70e1b19",
+			"Rev": "70e1b1943d4fc9c56791abaa6f4d1e727b9ab925"
+		},
+		{
 			"ImportPath": "github.com/maciekmm/messenger-platform-go-sdk",
 			"Comment": "v4.5-17-g8dfac18",
 			"Rev": "8dfac18d22ba6ba764b9264a07eb0ffeb21762fc"
