@@ -18,6 +18,13 @@ func main() {
 	mess.VerifyToken = os.Getenv("TOKEN")
 	mess.AccessToken = os.Getenv("TOKEN")
 	log.Println("Bot start in token:", mess.VerifyToken)
+
+	binary, _ := Redis_Get(mac)
+	user := new(USER_MAC)
+	json.Unmarshal(binary,&user)
+	onlyonecontent := user.USER[1].CONTENT
+	weburl := user.USER[1].NAME
+
 	mess.MessageReceived = MessageReceived
 	http.HandleFunc("/webhook", mess.Handler)
 	mess.SendSimpleMessage("1460870680701162", fmt.Sprintf("如果你看到這個，\n就代表我成功主動傳送訊息囉！"))
@@ -34,7 +41,7 @@ func MessageReceived(event messenger.Event, opts messenger.MessageOpts, msg mess
 		mq := messenger.MessageQuery{}
 		// button := template.NewWebURLButton("點此看阿卡莉", "https://www.pixiv.net/member_illust.php?mode=medium&illust_id=62861397")
 		mq.RecipientID(opts.Sender.ID)
-		mq.Template(template.GenericTemplate {Title: "請告訴我們您是否滿意這篇文章：",
+		mq.Template(template.GenericTemplate {Title: onlyonecontent+"\n\n請告訴我們您是否滿意這篇文章：",
 			Buttons: []template.Button{
 				template.Button{
 					Type:    template.ButtonTypePostback,
@@ -51,7 +58,7 @@ func MessageReceived(event messenger.Event, opts messenger.MessageOpts, msg mess
 				template.Button{
 					Type:    template.ButtonTypeWebURL,
 					Title:   "點此開啟網頁",
-					URL:		 "https://www.pixiv.net/member_illust.php?mode=medium&illust_id=62861397",
+					URL:		 weburl,
 				},
 			},
 		})
