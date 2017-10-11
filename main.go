@@ -30,34 +30,29 @@ func main() {
 }
 
 
-// func handler(event messenger.Event, opts messenger.MessageOpts, msg messenger.ReceivedMessage) {
-// 		mq := messenger.MessageQuery{}
-// 		mq.RecipientID("1460870680701162")
-// 		mq.Template(template.GenericTemplate {Title: "abc",
-// 			Buttons: []template.Button{
-// 				template.Button{
-// 					Type:    template.ButtonTypePostback,
-// 					Payload: "test",
-// 					Title:   "abcde",
-// 				},
-// 			},
-// 		})
-// 		resp, err := mess.SendMessage(mq)
-// 		if err != nil {
-// 			fmt.Println(err)
-// 		}
-// 		fmt.Printf("%+v", resp)
-// 	}
-
-
-
-
-  // MessageReceived :Callback to handle when message received.
 func MessageReceived(event messenger.Event, opts messenger.MessageOpts, msg messenger.ReceivedMessage) {
-	// log.Println("event:", event, " opt:", opts, " msg:", msg)
-	resp, err := mess.SendSimpleMessage(opts.Sender.ID, fmt.Sprintf("你好，現在是被動的回復訊息。\n你的ID為%s\n你剛剛說的話為：%s", opts.Sender.ID ,msg.Text))
-	if err != nil {
-		fmt.Println(err)
+		mq := messenger.MessageQuery{}
+		mq.RecipientID("1460870680701162")
+		mq.Template(template.GenericTemplate {Title: "abc",
+			Buttons: NewWebURLButton("點此看阿卡莉", "https://www.pixiv.net/member_illust.php?mode=medium&illust_id=62861397")
+			},
+		})
+		resp, err := mess.SendMessage(mq)
+		if err != nil {
+			fmt.Println(err)
+		}
+		fmt.Printf("%+v", resp)
 	}
-	fmt.Printf("%+v", resp)
-}
+
+
+
+//
+//   // MessageReceived :Callback to handle when message received.
+// func MessageReceived(event messenger.Event, opts messenger.MessageOpts, msg messenger.ReceivedMessage) {
+// 	// log.Println("event:", event, " opt:", opts, " msg:", msg)
+// 	resp, err := mess.SendSimpleMessage(opts.Sender.ID, fmt.Sprintf("你好，現在是被動的回復訊息。\n你的ID為%s\n你剛剛說的話為：%s", opts.Sender.ID ,msg.Text))
+// 	if err != nil {
+// 		fmt.Println(err)
+// 	}
+// 	fmt.Printf("%+v", resp)
+// }
