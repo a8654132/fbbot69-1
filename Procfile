@@ -1,1 +1,1 @@
-web: FBBotTemplate
+web: fbbot69-1
