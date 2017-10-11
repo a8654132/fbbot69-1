@@ -20,15 +20,7 @@ func main() {
 	mess.AccessToken = os.Getenv("TOKEN")
 	log.Println("Bot start in token:", mess.VerifyToken)
 
-	binary, _ := Redis_Get(mac)
-	user := new(USER_MAC)
-	json.Unmarshal(binary,&user)
-	onlyonecontent := user.USER[1].CONTENT
-	weburl := user.USER[1].NAME
-
-
 	http.HandleFunc("/webhook", mess.Handler)
-	mess.SendSimpleMessage("1460870680701162", onlyonecontent )
 	SendButton();
 	// mess.MessageReceived = handler
 
@@ -39,11 +31,17 @@ func main() {
 }
 
 
-func SendButton(event messenger.Event, opts messenger.MessageOpts, msg messenger.ReceivedMessage) {
+func SendButton() {
 		mq := messenger.MessageQuery{}
+
+		binary, _ := Redis_Get(mac)
+		user := new(USER_MAC)
+		json.Unmarshal(binary,&user)
+		onlyonecontent := user.USER[1].CONTENT
+		weburl := user.USER[1].NAME
 		// button := template.NewWebURLButton("點此看阿卡莉", "https://www.pixiv.net/member_illust.php?mode=medium&illust_id=62861397")
 		mq.RecipientID("1460870680701162")
-		mq.Template(template.GenericTemplate {Title: onlyonecontent+"請告訴我們您是否滿意這篇文章：",
+		mq.Template(template.GenericTemplate {Title: "請告訴我們您是否滿意這篇文章：",
 			Buttons: []template.Button{
 				template.Button{
 					Type:    template.ButtonTypePostback,
@@ -64,10 +62,8 @@ func SendButton(event messenger.Event, opts messenger.MessageOpts, msg messenger
 				},
 			},
 		})
-		resp, err := mess.SendMessage(mq)
-		if err != nil {
-			fmt.Println(err)
-		}
+		mess.SendSimpleMessage("1460870680701162", onlyonecontent )
+		mess.SendMessage(mq)
 		fmt.Printf("%+v", resp)
 	}
 
