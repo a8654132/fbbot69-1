@@ -7,7 +7,7 @@ import (
 	"os"
 
 	"github.com/maciekmm/messenger-platform-go-sdk"
-	"github.com/maciekmm/messenger-platform-go-sdk/template"
+	// "github.com/maciekmm/messenger-platform-go-sdk/template"
 )
 
 var mess = &messenger.Messenger{}
@@ -18,7 +18,7 @@ func main() {
 	mess.VerifyToken = os.Getenv("TOKEN")
 	mess.AccessToken = os.Getenv("TOKEN")
 	log.Println("Bot start in token:", mess.VerifyToken)
-	mess.MessageReceived = MessageReceived
+	// mess.MessageReceived = MessageReceived
 	http.HandleFunc("/webhook", mess.Handler)
 	mess.SendSimpleMessage("1460870680701162", fmt.Sprintf("如果你看到這個，\n就代表我成功主動傳送訊息囉！"))
 	// mess.MessageReceived = handler
@@ -30,26 +30,26 @@ func main() {
 }
 
 
-func MessageReceived(event messenger.Event, opts messenger.MessageOpts, msg messenger.ReceivedMessage) {
-		mq := messenger.MessageQuery{}
-		// button := template.NewWebURLButton("點此看阿卡莉", "https://www.pixiv.net/member_illust.php?mode=medium&illust_id=62861397")
-		mq.RecipientID(opts.Sender.ID)
-		mq.Template(template.GenericTemplate {Title: "abc",
-			Buttons: []template.Button{
-				template.Button{
-					Type:    template.ButtonTypeWebURL,
-					Payload: "test",
-					Title:   "點此看阿卡莉",
-					URL:		 "https://www.pixiv.net/member_illust.php?mode=medium&illust_id=62861397",
-				},
-			},
-		})
-		resp, err := mess.SendMessage(mq)
-		if err != nil {
-			fmt.Println(err)
-		}
-		fmt.Printf("%+v", resp)
-	}
+// func MessageReceived(event messenger.Event, opts messenger.MessageOpts, msg messenger.ReceivedMessage) {
+// 		mq := messenger.MessageQuery{}
+// 		// button := template.NewWebURLButton("點此看阿卡莉", "https://www.pixiv.net/member_illust.php?mode=medium&illust_id=62861397")
+// 		mq.RecipientID(opts.Sender.ID)
+// 		mq.Template(template.GenericTemplate {Title: "abc",
+// 			Buttons: []template.Button{
+// 				template.Button{
+// 					Type:    template.ButtonTypeWebURL,
+// 					Payload: "test",
+// 					Title:   "點此看阿卡莉",
+// 					URL:		 "https://www.pixiv.net/member_illust.php?mode=medium&illust_id=62861397",
+// 				},
+// 			},
+// 		})
+// 		resp, err := mess.SendMessage(mq)
+// 		if err != nil {
+// 			fmt.Println(err)
+// 		}
+// 		fmt.Printf("%+v", resp)
+// 	}
 
 
 
