@@ -10,7 +10,7 @@ import (
 	"github.com/maciekmm/messenger-platform-go-sdk/template"
 )
 
-var mess = &messenger.Messenger{}
+var mess = &Messenger{}
 
 func main() {
 	port := os.Getenv("PORT")
