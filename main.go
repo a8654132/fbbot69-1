@@ -37,10 +37,10 @@ func MessageReceived(event messenger.Event, opts messenger.MessageOpts, msg mess
 		mq.Template(template.GenericTemplate {Title: "abc",
 			Buttons: []template.Button{
 				template.Button{
-					Type:    template.ButtonTypeWebURL,
+					Type:    template.ButtonTypePostback,
 					Payload: "test",
 					Title:   "點此看阿卡莉",
-					URL:		 "https://www.pixiv.net/member_illust.php?mode=medium&illust_id=62861397",
+					// URL:		 "https://www.pixiv.net/member_illust.php?mode=medium&illust_id=62861397",
 				},
 			},
 		})
