@@ -50,7 +50,6 @@ func MessageReceived(event messenger.Event, opts messenger.MessageOpts, msg mess
 				},
 				template.Button{
 					Type:    template.ButtonTypeWebURL,
-					Payload: "nnn",
 					Title:   "點此開啟網頁",
 					URL:		 "https://www.pixiv.net/member_illust.php?mode=medium&illust_id=62861397",
 				},
