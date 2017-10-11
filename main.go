@@ -40,7 +40,7 @@ func MessageReceived(event messenger.Event, opts messenger.MessageOpts, msg mess
 					Type:    template.ButtonTypeWebURL,
 					Payload: "test",
 					Title:   "點此看阿卡莉",
-					URL:		 "https://www.pixiv.net/member_illust.php?mode=medium&illust_id=62861397"
+					URL:		 "https://www.pixiv.net/member_illust.php?mode=medium&illust_id=62861397",
 				},
 			})
 		resp, err := mess.SendMessage(mq)
