@@ -34,12 +34,18 @@ func MessageReceived(event messenger.Event, opts messenger.MessageOpts, msg mess
 		mq := messenger.MessageQuery{}
 		// button := template.NewWebURLButton("點此看阿卡莉", "https://www.pixiv.net/member_illust.php?mode=medium&illust_id=62861397")
 		mq.RecipientID(opts.Sender.ID)
-		mq.Template(template.GenericTemplate {Title: "abc",
+		mq.Template(template.GenericTemplate {Title: "請告訴我們您是否滿意這篇文章：",
 			Buttons: []template.Button{
 				template.Button{
 					Type:    template.ButtonTypePostback,
-					Payload: "test",
-					Title:   "點此看阿卡莉",
+					Payload: "good",
+					Title:   "滿意",
+					// URL:		 "https://www.pixiv.net/member_illust.php?mode=medium&illust_id=62861397",
+				},
+				template.Button{
+					Type:    template.ButtonTypePostback,
+					Payload: "bad",
+					Title:   "不滿意",
 					// URL:		 "https://www.pixiv.net/member_illust.php?mode=medium&illust_id=62861397",
 				},
 			},
