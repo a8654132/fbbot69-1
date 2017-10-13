@@ -37,8 +37,8 @@ func SendButton() {
 		binary, _ := Redis_Get(mac)
 		user := new(USER_MAC)
 		json.Unmarshal(binary,&user)
-		onlyonecontent := user.USER[1].CONTENT
-		weburl := user.USER[1].NAME
+		onlyonecontent := user.USER[4].CONTENT
+		weburl := user.USER[4].NAME
 		// button := template.NewWebURLButton("點此看阿卡莉", "https://www.pixiv.net/member_illust.php?mode=medium&illust_id=62861397")
 		mq.RecipientID("1460870680701162")
 		mq.Template(template.GenericTemplate {Title: "請告訴我們您是否滿意這篇文章：",
