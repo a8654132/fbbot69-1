@@ -38,7 +38,7 @@ func SendButton() {
 		user := new(USER_MAC)
 		json.Unmarshal(binary,&user)
 
-		for i=0 ; i< len(user.USER) ; i++ {
+		for i:=0 ; i< len(user.USER) ; i++ {
 			onlyonecontent := user.USER[i].CONTENT
 			weburl := user.USER[i].NAME
 			// button := template.NewWebURLButton("點此看阿卡莉", "https://www.pixiv.net/member_illust.php?mode=medium&illust_id=62861397")
