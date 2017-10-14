@@ -8,7 +8,7 @@ import (
 	"encoding/json"
 
 	"github.com/maciekmm/messenger-platform-go-sdk"
-	"github.com/maciekmm/messenger-platform-go-sdk/template"
+	// "github.com/maciekmm/messenger-platform-go-sdk/template"
 )
 
 var mess = &messenger.Messenger{}
@@ -37,35 +37,34 @@ func SendButton() {
 		user := new(USER_MAC)
 		json.Unmarshal(binary,&user)
 
-		// for i:=0 ; i< len(user.USER) ; i++ {
+		for i:=0 ; i< len(user.USER) ; i++ {
 
-		for i:=0 ; i< 2 ; i++ {
-			mq := messenger.MessageQuery{}
+		// for i:=0 ; i< 2 ; i++ {
+			// mq := messenger.MessageQuery{}
 			onlyonecontent := user.USER[i].CONTENT
-			// weburl := user.USER[i].NAME
-			mq.RecipientID("1460870680701162")
-			mq.Template(template.GenericTemplate {Title: "請告訴我們您是否滿意這篇文章：",
-				Buttons: []template.Button{
-					template.Button{
-						Type:    template.ButtonTypePostback,
-						Payload: "good",
-						Title:   "滿意",
-					},
-					template.Button{
-						Type:    template.ButtonTypePostback,
-						Payload: "bad",
-						Title:   "不滿意",
-					},
-					template.Button{
-						Type:    template.ButtonTypeWebURL,
-						Title:   "點此開啟網頁",
-						URL:		 user.USER[i].NAME,
-					},
-				},
-			})
+			// mq.RecipientID("1460870680701162")
+			// mq.Template(template.GenericTemplate {Title: "請告訴我們您是否滿意這篇文章：",
+			// 	Buttons: []template.Button{
+			// 		template.Button{
+			// 			Type:    template.ButtonTypePostback,
+			// 			Payload: "good",
+			// 			Title:   "滿意",
+			// 		},
+			// 		template.Button{
+			// 			Type:    template.ButtonTypePostback,
+			// 			Payload: "bad",
+			// 			Title:   "不滿意",
+			// 		},
+			// 		template.Button{
+			// 			Type:    template.ButtonTypeWebURL,
+			// 			Title:   "點此開啟網頁",
+			// 			URL:		 user.USER[i].NAME,
+			// 		},
+			// 	},
+			// })
 			x := fmt.Sprintf("%d", i+1)
 			mess.SendSimpleMessage("1460870680701162", x + ".\n" + onlyonecontent )
-			mess.SendMessage(mq)
+			// mess.SendMessage(mq)
 		}
 
 	}
