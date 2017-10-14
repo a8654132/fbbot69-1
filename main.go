@@ -63,7 +63,7 @@ func SendButton() {
 					},
 				},
 			})
-			mess.SendSimpleMessage("1460870680701162", i + ".\n" +onlyonecontent )
+			mess.SendSimpleMessage("1460870680701162", "%d.\n" + onlyonecontent , i )
 			mess.SendMessage(mq)
 		}
 
