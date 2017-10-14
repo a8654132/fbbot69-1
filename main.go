@@ -63,7 +63,7 @@ func SendButton() {
 					},
 				},
 			})
-			x := fmt.Sprintf("%d", i)
+			x := fmt.Sprintf("%d", i+1)
 			mess.SendSimpleMessage("1460870680701162", x + ".\n" + onlyonecontent )
 			mess.SendMessage(mq)
 		}
