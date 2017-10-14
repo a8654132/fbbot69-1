@@ -32,7 +32,7 @@ func main() {
 
 
 func SendButton() {
-		mq := messenger.MessageQuery{}
+		// mq := messenger.MessageQuery{}
 
 		binary, _ := Redis_Get(mac)
 		user := new(USER_MAC)
@@ -43,33 +43,28 @@ func SendButton() {
 		for i:=0 ; i< 2 ; i++ {
 			onlyonecontent := user.USER[i].CONTENT
 			// weburl := user.USER[i].NAME
-			mq.RecipientID("1460870680701162")
-			mq.Template(template.GenericTemplate {Title: "請告訴我們您是否滿意這篇文章：",
-				Buttons: []template.Button{
-					template.Button{
-						Type:    template.ButtonTypePostback,
-						Payload: "good",
-						Title:   "滿意",
-					},
-					template.Button{
-						Type:    template.ButtonTypePostback,
-						Payload: "bad",
-						Title:   "不滿意",
-					},
-					template.Button{
-						Type:    template.ButtonTypeWebURL,
-						Title:   "點此開啟網頁",
-						URL:		 user.USER[i].NAME,
-					},
-				},
-			})
+			// mq.RecipientID("1460870680701162")
+			// mq.Template(template.GenericTemplate {Title: "請告訴我們您是否滿意這篇文章：",
+			// 	Buttons: []template.Button{
+			// 		template.Button{
+			// 			Type:    template.ButtonTypePostback,
+			// 			Payload: "good",
+			// 			Title:   "滿意",
+			// 		},
+			// 		template.Button{
+			// 			Type:    template.ButtonTypePostback,
+			// 			Payload: "bad",
+			// 			Title:   "不滿意",
+			// 		},
+			// 		template.Button{
+			// 			Type:    template.ButtonTypeWebURL,
+			// 			Title:   "點此開啟網頁",
+			// 			URL:		 user.USER[i].NAME,
+			// 		},
+			// 	},
+			// })
 			mess.SendSimpleMessage("1460870680701162", onlyonecontent )
-			mess.SendMessage(mq)
-
-			mq = {
-				Template: "",
-			}
-
+			// mess.SendMessage(mq)
 		}
 
 	}
