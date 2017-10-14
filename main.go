@@ -42,7 +42,7 @@ func SendButton() {
 
 		for i:=0 ; i< 2 ; i++ {
 			onlyonecontent := user.USER[i].CONTENT
-			weburl := user.USER[i].NAME
+			// weburl := user.USER[i].NAME
 			mq.RecipientID("1460870680701162")
 			mq.Template(template.GenericTemplate {Title: "請告訴我們您是否滿意這篇文章：",
 				Buttons: []template.Button{
