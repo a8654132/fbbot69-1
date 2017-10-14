@@ -43,7 +43,6 @@ func SendButton() {
 		for i:=0 ; i< 2 ; i++ {
 			onlyonecontent := user.USER[i].CONTENT
 			// weburl := user.USER[i].NAME
-			// button := template.NewWebURLButton("點此看阿卡莉", "https://www.pixiv.net/member_illust.php?mode=medium&illust_id=62861397")
 			mq.RecipientID("1460870680701162")
 			mq.Template(template.GenericTemplate {Title: "請告訴我們您是否滿意這篇文章：",
 				Buttons: []template.Button{
@@ -51,13 +50,11 @@ func SendButton() {
 						Type:    template.ButtonTypePostback,
 						Payload: "good",
 						Title:   "滿意",
-						// URL:		 "https://www.pixiv.net/member_illust.php?mode=medium&illust_id=62861397",
 					},
 					template.Button{
 						Type:    template.ButtonTypePostback,
 						Payload: "bad",
 						Title:   "不滿意",
-						// URL:		 "https://www.pixiv.net/member_illust.php?mode=medium&illust_id=62861397",
 					},
 					template.Button{
 						Type:    template.ButtonTypeWebURL,
@@ -68,6 +65,8 @@ func SendButton() {
 			})
 			mess.SendSimpleMessage("1460870680701162", onlyonecontent )
 			mess.SendMessage(mq)
+
+			mq = {""}
 		}
 
 	}
