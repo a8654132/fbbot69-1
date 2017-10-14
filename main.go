@@ -45,7 +45,7 @@ func SendButton() {
 			// weburl := user.USER[i].NAME
 			mq.RecipientID("1460870680701162")
 			mq.Template(template.GenericTemplate {Title: "請告訴我們您是否滿意這篇文章：",
-				Buttons: []template.Button{
+				Buttons: [i]template.Button{
 					template.Button{
 						Type:    template.ButtonTypePostback,
 						Payload: "good",
