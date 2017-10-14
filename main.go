@@ -32,7 +32,6 @@ func main() {
 
 
 func SendButton() {
-		mq := messenger.MessageQuery{}
 
 		binary, _ := Redis_Get(mac)
 		user := new(USER_MAC)
@@ -41,6 +40,7 @@ func SendButton() {
 		// for i:=0 ; i< len(user.USER) ; i++ {
 
 		for i:=0 ; i< 2 ; i++ {
+			mq := messenger.MessageQuery{}
 			onlyonecontent := user.USER[i].CONTENT
 			// weburl := user.USER[i].NAME
 			mq.RecipientID("1460870680701162")
