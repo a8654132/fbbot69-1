@@ -45,7 +45,7 @@ func SendButton() {
 			// weburl := user.USER[i].NAME
 			mq.RecipientID("1460870680701162")
 			mq.Template(template.GenericTemplate {Title: "請告訴我們您是否滿意這篇文章：",
-				Buttons: [i]template.Button{
+				Buttons: []template.Button{
 					template.Button{
 						Type:    template.ButtonTypePostback,
 						Payload: "good",
@@ -63,7 +63,7 @@ func SendButton() {
 					},
 				},
 			})
-			mess.SendSimpleMessage("1460870680701162", onlyonecontent )
+			mess.SendSimpleMessage("1460870680701162", i + ".\n" +onlyonecontent )
 			mess.SendMessage(mq)
 		}
 
