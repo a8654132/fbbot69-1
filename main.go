@@ -1,7 +1,7 @@
 package main
 
 import (
-	// "fmt"
+	"fmt"
 	"log"
 	"net/http"
 	"os"
@@ -63,8 +63,8 @@ func SendButton() {
 					},
 				},
 			})
-			x := "%d" ,i
-			mess.SendSimpleMessage("1460870680701162", x + "\n" + onlyonecontent )
+			x := fmt.Sprintf("%d", i)
+			mess.SendSimpleMessage("1460870680701162", x + ".\n" + onlyonecontent )
 			mess.SendMessage(mq)
 		}
 
