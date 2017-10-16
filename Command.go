@@ -35,7 +35,7 @@ func Redis_IDtoMAC(ID string)(CONTENT string){
 			CONTENT = CONTENT+user.USER[i].NAME+"\n"
 			count ++
 		}
-		return
+		return CONTENT
 
 }
 
