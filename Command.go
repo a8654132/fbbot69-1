@@ -31,8 +31,9 @@ func Redis_IDtoMAC(ID string)(CONTENT string){
 		json.Unmarshal(binary,&user)
 
 		var count int
-		for i:=0;i<len(user.USER) && count<3 ; i++{
+		for i:=0;i<len(user.USER) && count>3 ; i++{
 			CONTENT = CONTENT+user.USER[i].NAME+"\n"
+			count ++
 		}
 		return
 
