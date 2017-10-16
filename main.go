@@ -5,7 +5,10 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"encoding/json"
+
 	"github.com/maciekmm/messenger-platform-go-sdk"
+	// "github.com/maciekmm/messenger-platform-go-sdk/template"
 )
 
 var mess = &messenger.Messenger{}
@@ -18,13 +21,20 @@ func main() {
 	log.Println("Bot start in token:", mess.VerifyToken)
 
 	http.HandleFunc("/webhook", mess.Handler)
+	SendButton();
 	mess.MessageReceived = MessageReceived
 
 	log.Fatal(http.ListenAndServe(":"+port, nil))
 }
 
+
 func MessageReceived(event messenger.Event, opts messenger.MessageOpts, msg messenger.ReceivedMessage) {
+	content := Redis_IDtoMAC(opts.Sender.ID)
 	resp, err := mess.SendSimpleMessage(opts.Sender.ID, fmt.Sprintf("你好，現在是被動的回復訊息。\n你的ID為%s\n你剛剛說的話為：%s", opts.Sender.ID ,msg.Text))
+	if err != nil {
+		fmt.Println(err)
+	}
+	resp, err := mess.SendSimpleMessage(opts.Sender.ID , content)
 	if err != nil {
 		fmt.Println(err)
 	}
