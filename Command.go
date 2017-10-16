@@ -20,7 +20,7 @@ func Redis_IDtoMAC(ID string)(CONTENT string){
 		_, err2 := c.Do("SELECT", "2")
 		CheckError(err2)
 
-		MAC, err2 := redis.strings(c.Do("GET", ID))
+		MAC, err2 := redis.Strings(c.Do("GET", ID))
 		CheckError(err2)
 
 		_, err2 = c.Do("SELECT", "0")
