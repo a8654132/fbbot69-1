@@ -27,7 +27,10 @@ func Redis_IDtoMAC(ID string)(CONTENT string){
 		CheckError(err2)
 
 		binary, err2 := redis.Bytes(c.Do("GET", MAC))
-		CheckError(err2)
+		if err2 != nil{
+			CONTENT ="you don't have new url"
+			return
+		}
 
 		user := new(USER_MAC)
 		json.Unmarshal(binary,&user)
