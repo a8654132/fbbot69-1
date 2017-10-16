@@ -20,13 +20,15 @@ func Redis_IDtoMAC(ID string)(CONTENT string){
 		_, err2 := c.Do("SELECT", "2")
 		CheckError(err2)
 
-		MAC, err2 := redis.Strings(c.Do("GET", ID))
+		MAC, err2 := redis.String(c.Do("GET", ID))
 		CheckError(err2)
 
 		_, err2 = c.Do("SELECT", "0")
 		CheckError(err2)
+
 		binary, err2 := redis.Bytes(c.Do("GET", MAC))
 		CheckError(err2)
+
 		user := new(USER_MAC)
 		json.Unmarshal(binary,&user)
 
