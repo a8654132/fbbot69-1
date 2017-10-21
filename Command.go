@@ -7,9 +7,10 @@ import(
 	"encoding/json"
 )
 
-var RedisPort = "6379"
+var RedisPort = "8768"
 var RedisIP = "140.115.153.185"
 // var mac = "48:4b:aa:b0:79:d0"
+var Password = "mwnlmwnl"
 
 func Redis_IDtoMAC(ID string)(CONTENT string){
 	RedisIPPORT := fmt.Sprintf("%s:%s", RedisIP, RedisPort)
@@ -17,14 +18,25 @@ func Redis_IDtoMAC(ID string)(CONTENT string){
 		CheckError(err)
 		defer c.Close()
 
+
+		c.Do("AUTH",Password)
 		_, err2 := c.Do("SELECT", "2")
-		CheckError(err2)
+		if err2 != nil{
+			CONTENT ="you don't have new url"
+			return
+		}
 
 		MAC, err2 := redis.String(c.Do("GET", ID))
-		CheckError(err2)
+		if err2 != nil{
+			CONTENT ="you don't have new url"
+			return
+		}
 
 		_, err2 = c.Do("SELECT", "0")
-		CheckError(err2)
+		if err2 != nil{
+			CONTENT ="you don't have new url"
+			return
+		}
 
 		binary, err2 := redis.Bytes(c.Do("GET", MAC))
 		if err2 != nil{
@@ -50,6 +62,7 @@ func Redis_Get(KEY_NAME string) ([]byte, error){
     CheckError(err)
     defer c.Close()
 
+	c.Do("AUTH",Password)
 	v, err2 := redis.Bytes(c.Do("GET", KEY_NAME))
 	return v, err2
 }
@@ -60,6 +73,7 @@ func Redis_Set(KEY_NAME string, VAL []byte) error{
     CheckError(err)
     defer c.Close()
 
+		c.Do("AUTH",Password)
 	_, err2 := c.Do("SET", KEY_NAME, VAL)
 	return err2
 }
@@ -70,29 +84,31 @@ func Redis_Del(KEY_NAME string) error{
 	CheckError(err)
 	defer c.Close()
 
+	c.Do("AUTH",Password)
 	_, err2 := c.Do("DEL", KEY_NAME)
 	CheckError(err2)
 	return err2
 }
 
 
-func Redis_DelAllUser()error{
-	RedisIPPORT := fmt.Sprintf("%s:%s", RedisIP, RedisPort)
-	c, err := redis.Dial("tcp", RedisIPPORT)
-	CheckError(err)
-	defer c.Close()
-
-	user := Redis_AllUser()
-	var err2 error = nil
-	for i:=0 ; i<len(user) ; i++{
-		_, err2 = c.Do("DEL", user[i])
-		CheckError(err2)
-		if err2 != nil{
-			return err2
-		}
-	}
-	return err2
-}
+// func Redis_DelAllUser()error{
+// 	RedisIPPORT := fmt.Sprintf("%s:%s", RedisIP, RedisPort)
+// 	c, err := redis.Dial("tcp", RedisIPPORT)
+// 	CheckError(err)
+// 	defer c.Close()
+//
+// 	c.Do("AUTH",Password)
+// 	user := Redis_AllUser()
+// 	var err2 error = nil
+// 	for i:=0 ; i<len(user) ; i++{
+// 		_, err2 = c.Do("DEL", user[i])
+// 		CheckError(err2)
+// 		if err2 != nil{
+// 			return err2
+// 		}
+// 	}
+// 	return err2
+// }
 
 
 //this will find all user with a strings slice
@@ -102,6 +118,7 @@ func Redis_AllUser()([]string){
 	CheckError(err)
 	defer c.Close()
 
+	c.Do("AUTH",Password)
 	user, err2 := redis.Strings(c.Do("KEYS", "*"))
 	CheckError(err2)
 	return user
@@ -114,6 +131,7 @@ func Redis_FindUser(USER string)(bool){
 	CheckError(err)
 	defer c.Close()
 
+	c.Do("AUTH",Password)
 	EXIST, err2 := redis.Bool(c.Do("EXISTS", USER))
 	CheckError(err2)
 	return EXIST
