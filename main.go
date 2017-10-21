@@ -20,6 +20,9 @@ func main() {
 	mess.AccessToken = os.Getenv("TOKEN")
 	log.Println("Bot start in token:", mess.VerifyToken)
 
+	mess.SendSimpleMessage(1460870680701162, "這是主動的，傳給1460870680701162")
+	mess.SendSimpleMessage(2122993047726622, "這是主動的，傳給2122993047726622")
+
 	http.HandleFunc("/webhook", mess.Handler)
 	mess.MessageReceived = MessageReceived
 
