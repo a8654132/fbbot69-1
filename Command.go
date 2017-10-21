@@ -7,7 +7,7 @@ import(
 	"encoding/json"
 )
 
-var RedisPort = "8768"
+var RedisPort = "8769"
 var RedisIP = "140.115.153.185"
 // var mac = "48:4b:aa:b0:79:d0"
 var Password = "mwnlmwnl"
