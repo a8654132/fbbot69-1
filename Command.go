@@ -47,25 +47,13 @@ func Redis_IDtoMAC(ID string)(CONTENT string){
 		user := new(USER_MAC)
 		json.Unmarshal(binary,&user)
 
-		GetName(){}
+		var count int
+		for i:=0;i< len(user.USER) && count<3 ; i++{
+			CONTENT = CONTENT+user.USER[i].CONTENT+"\n"
+			count ++
+		}
 		return CONTENT
 
-}
-
-func GetName()(CONTENT string){
-	var count int
-	for i:=0;i< len(user.USER) && count<3 ; i++{
-		CONTENT = CONTENT+user.USER[i].NAME+"\n"
-		count ++
-	}
-}
-
-func GetName()(CONTENT string){
-	var count int
-	for i:=0;i< len(user.USER) && count<3 ; i++{
-		CONTENT = CONTENT+user.USER[i].NAME+"\n"
-		count ++
-	}
 }
 
 func Redis_Get(KEY_NAME string) ([]byte, error){
