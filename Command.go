@@ -12,7 +12,7 @@ var RedisIP = "140.115.153.185"
 // var mac = "48:4b:aa:b0:79:d0"
 var Password = "mwnlmwnl"
 
-func Redis_IDtoMAC(ID string)(CONTENT string){
+func Redis_IDtoMAC(ID string)(CONTENT []string){
 	RedisIPPORT := fmt.Sprintf("%s:%s", RedisIP, RedisPort)
 	c, err := redis.Dial("tcp", RedisIPPORT)
 		CheckError(err)
@@ -50,7 +50,8 @@ func Redis_IDtoMAC(ID string)(CONTENT string){
 		var count int
 		for i:=len(user.CRAWLER);i>0 && count<3 ; i--{
 			for j:=0;j< len(user.CRAWLER[i-1].GOOGLE);j++{
-				CONTENT = CONTENT+user.CRAWLER[i-1].GOOGLE[j].CONTENT+"\n\n"
+				// CONTENT = CONTENT+user.CRAWLER[i-1].GOOGLE[j].CONTENT+"\n\n"
+				CONTENT  = append(CONTENT,user.CRAWLER[i-1].GOOGLE[j].CONTENT)
 				count ++
 			}
 		}
