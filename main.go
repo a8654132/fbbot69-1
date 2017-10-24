@@ -36,11 +36,9 @@ func MessageReceived(event messenger.Event, opts messenger.MessageOpts, msg mess
 	// }
 
 	for i:=0;i<len(content);i++{
-		resp, err := mess.SendSimpleMessage(opts.Sender.ID, fmt.Sprintf("%s",content[i]))
-		if err != nil {
-			fmt.Println(err)
-		}
+		 mess.SendSimpleMessage(opts.Sender.ID, fmt.Sprintf("%s",content[i]))
+
 	}
 
-	fmt.Printf("%+v", resp)
+	// fmt.Printf("%+v", resp)
 }
