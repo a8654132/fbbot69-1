@@ -22,25 +22,25 @@ func Redis_IDtoMAC(ID string)(CONTENT []string){
 		c.Do("AUTH",Password)
 		_, err2 := c.Do("SELECT", "2")
 		if err2 != nil{
-			CONTENT =appned(CONTENT,"you don't have new url1")
+			CONTENT =append(CONTENT,"you don't have new url1")
 			return
 		}
 
 		MAC, err2 := redis.String(c.Do("GET", ID))
 		if err2 != nil{
-			CONTENT =appned(CONTENT,"you don't have new url2")
+			CONTENT =append(CONTENT,"you don't have new url2")
 			return
 		}
 
 		_, err2 = c.Do("SELECT", "0")
 		if err2 != nil{
-			CONTENT =appned(CONTENT,"you don't have new url3")
+			CONTENT =append(CONTENT,"you don't have new url3")
 			return
 		}
 
 		binary, err2 := redis.Bytes(c.Do("GET", MAC))
 		if err2 != nil{
-			CONTENT =appned(CONTENT,"you don't have new url4")
+			CONTENT =append(CONTENT,"you don't have new url4")
 			return
 		}
 
