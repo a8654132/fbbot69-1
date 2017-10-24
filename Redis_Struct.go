@@ -1,7 +1,7 @@
 package main
 
 type USER_MAC struct{
-	LINDID	string
+	LINEID	string
 	USER 	[]URL
 	CRAWLER []KEYWORD
 }
@@ -10,11 +10,17 @@ type URL struct{
 	NAME 	string
 	CONTENT string
 	KEYWORD string
-	TIME	int
+	TIME	int64
 }
 
 type KEYWORD struct{
-	NAME	string
+	KEYWORD	string
+	GOOGLE []CRAWLER_GOOGLE
+}
+
+type CRAWLER_GOOGLE struct{
+	URL_NAME	string
 	CONTENT string
-	TIME	int
+	KEYWORD	string
+	TIME	int64
 }
