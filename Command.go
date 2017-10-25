@@ -9,7 +9,6 @@ import(
 
 var RedisPort = "8769"
 var RedisIP = "140.115.153.185"
-// var mac = "48:4b:aa:b0:79:d0"
 var Password = "mwnlmwnl"
 
 func Redis_IDtoMAC(ID string)(CONTENT []string){
@@ -28,7 +27,7 @@ func Redis_IDtoMAC(ID string)(CONTENT []string){
 
 		MAC, err2 := redis.String(c.Do("GET", ID))
 		if err2 != nil{
-			CONTENT =append(CONTENT,"you don't have new url2")
+			CONTENT =append(CONTENT,"ID與MAC未正確輸入")
 			return
 		}
 
@@ -40,7 +39,7 @@ func Redis_IDtoMAC(ID string)(CONTENT []string){
 
 		binary, err2 := redis.Bytes(c.Do("GET", MAC))
 		if err2 != nil{
-			CONTENT =append(CONTENT,"you don't have new url4")
+			CONTENT =append(CONTENT,"你沒有新資料")
 			return
 		}
 
