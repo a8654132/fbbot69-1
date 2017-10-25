@@ -45,7 +45,7 @@ func MessageReceived(event messenger.Event, opts messenger.MessageOpts, msg mess
 
 	//
 	mq := messenger.MessageQuery{}
-	mq.RecipientID(opts.Sender.ID)
+	mq.RecipientID("1460870680701162")
 	mq.Template(template.GenericTemplate {Title: "請告訴我們你想執行的動作",
 		Buttons: []template.Button{
 			template.Button{
