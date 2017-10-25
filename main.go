@@ -8,7 +8,7 @@ import (
 	// "encoding/json"
 
 	"github.com/maciekmm/messenger-platform-go-sdk"
-	// "github.com/maciekmm/messenger-platform-go-sdk/template"
+	"github.com/maciekmm/messenger-platform-go-sdk/template"
 )
 
 var mess = &messenger.Messenger{}
@@ -42,25 +42,26 @@ func MessageReceived(event messenger.Event, opts messenger.MessageOpts, msg mess
 	}
 	//
 	mess.SendSimpleMessage(opts.Sender.ID, fmt.Sprintf("你的id為:%s",opts.Sender.ID))
+
 	//
-	// mq := messenger.MessageQuery{}
-	// mq.RecipientID(opts.Sender.ID)
-	// mq.Template(template.GenericTemplate {Title: "請告訴我們你想執行的動作",
-	// 	Buttons: []template.Button{
-	// 		template.Button{
-	// 			Type:    template.ButtonTypePostback,
-	// 			Payload: "post",
-	// 			Title:   "請貼文給我",
-	// 		},
-	// 		template.Button{
-	// 			Type:    template.ButtonTypeWebURL,
-	// 			Title:   "連結註冊頁面",
-	// 			URL:		 "140.115.153.185",
-	// 		},
-	// 	},
-	// })
-	//
-	// mess.SendMessage(mq)
+	mq := messenger.MessageQuery{}
+	mq.RecipientID(opts.Sender.ID)
+	mq.Template(template.GenericTemplate {Title: "請告訴我們你想執行的動作",
+		Buttons: []template.Button{
+			template.Button{
+				Type:    template.ButtonTypePostback,
+				Payload: "post",
+				Title:   "請貼文給我",
+			},
+			template.Button{
+				Type:    template.ButtonTypeWebURL,
+				Title:   "連結註冊頁面",
+				URL:		 "140.115.153.185",
+			},
+		},
+	})
+
+	mess.SendMessage(mq)
 
 	// fmt.Printf("%+v", resp)
 }
