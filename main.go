@@ -38,7 +38,8 @@ func MessageReceived(event messenger.Event, opts messenger.MessageOpts, msg mess
 	// }
 
 	for i:=0;i<len(content);i++{
-		 mess.SendSimpleMessage(opts.Sender.ID, fmt.Sprintf("%s",content[i]))
+		 message := Print_SetFont(content[i])
+		 mess.SendSimpleMessage(opts.Sender.ID, fmt.Sprintf("%s", message))
 
 	}
 	//
