@@ -28,12 +28,12 @@ func main() {
 
 
 func MessageReceived(event messenger.Event, opts messenger.MessageOpts, msg messenger.ReceivedMessage) {
-	stringid := fmt.Sprintf("%s",opts.Sender.ID)
-	content := Redis_IDtoMAC(stringid)
+	// stringid := fmt.Sprintf("%s",opts.Sender.ID)
+	// content := Redis_IDtoMAC(stringid)
 
 	mess.SendSimpleMessage(opts.Sender.ID, fmt.Sprintf("你的id為:%s",opts.Sender.ID))
 
-		for i:=0 ; i < len(content) ; i++{
+		for i:=0 ; i< len(content) ; i++{
 			mess.SendSimpleMessage(opts.Sender.ID, fmt.Sprintf("%s",content[i]))
 		}
 }
