@@ -48,6 +48,7 @@ func Redis_IDtoMAC(ID string)(CONTENT []string){
 		json.Unmarshal(binary,&user)
 
 		var count int
+		count = 0
 		for i:=len(user.CRAWLER);i>0 && count<3 ; i--{
 			for j:=0;j< len(user.CRAWLER[i-1].GOOGLE);j++{
 				// CONTENT = CONTENT+user.CRAWLER[i-1].GOOGLE[j].CONTENT+"\n\n"
