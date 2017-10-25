@@ -31,7 +31,6 @@ func MessageReceived(event messenger.Event, opts messenger.MessageOpts, msg mess
 	stringid := fmt.Sprintf("%s",opts.Sender.ID)
 	content := Redis_IDtoMAC(stringid)
 
-
 	// resp, err := mess.SendSimpleMessage(opts.Sender.ID, fmt.Sprintf("你好，現在是被動的回復訊息。\n你的ID為%s\n你剛剛說的話為：%s\n\n%s", opts.Sender.ID , msg.Text , content))
 	// if err != nil {
 	// 	fmt.Println(err)
@@ -40,10 +39,9 @@ func MessageReceived(event messenger.Event, opts messenger.MessageOpts, msg mess
 	for i:=0;i<len(content);i++{
 		 message := Print_SetFont(content[i])
 		 mess.SendSimpleMessage(opts.Sender.ID, fmt.Sprintf("%s", message))
-
 	}
 	//
-	// mess.SendSimpleMessage(opts.Sender.ID, fmt.Sprintf("你的id為:%s",opts.Sender.ID))
+	mess.SendSimpleMessage(opts.Sender.ID, fmt.Sprintf("你的id為:%s",opts.Sender.ID))
 	//
 	// mq := messenger.MessageQuery{}
 	// mq.RecipientID(opts.Sender.ID)
