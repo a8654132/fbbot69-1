@@ -27,7 +27,7 @@ func Redis_IDtoMAC(ID string)(CONTENT []string){
 
 		MAC, err2 := redis.String(c.Do("GET", ID))
 		if err2 != nil{
-			CONTENT =append(CONTENT,"錯誤:ID與MAC未正確輸入")
+			CONTENT =append(CONTENT,"ID與MAC未正確輸入")
 			return
 		}
 
@@ -39,7 +39,7 @@ func Redis_IDtoMAC(ID string)(CONTENT []string){
 
 		binary, err2 := redis.Bytes(c.Do("GET", MAC))
 		if err2 != nil{
-			CONTENT =append(CONTENT,"錯誤:你沒有新資料!")
+			CONTENT =append(CONTENT,"你沒有新資料!")
 			return
 		}
 
@@ -57,7 +57,7 @@ func Redis_IDtoMAC(ID string)(CONTENT []string){
 		}
 
 		if len(CONTENT) == 0{
-			CONTENT =append(CONTENT,"錯誤:你沒有新資料")
+			CONTENT =append(CONTENT,"你沒有新資料")
 			return CONTENT
 		}
 		return CONTENT
