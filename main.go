@@ -28,42 +28,12 @@ func main() {
 
 
 func MessageReceived(event messenger.Event, opts messenger.MessageOpts, msg messenger.ReceivedMessage) {
-	// stringid := fmt.Sprintf("%s",opts.Sender.ID)
-	content := Redis_IDtoMAC(opts.Sender.ID)
+	stringid := fmt.Sprintf("%s",opts.Sender.ID)
+	content := Redis_IDtoMAC(stringid)
 
-	// resp, err := mess.SendSimpleMessage(opts.Sender.ID, fmt.Sprintf("你好，現在是被動的回復訊息。\n你的ID為%s\n你剛剛說的話為：%s\n\n%s", opts.Sender.ID , msg.Text , content))
-	// if err != nil {
-	// 	fmt.Println(err)
-	// }
-
-	for i:=0;i < len(content);i++{
-		//  message := Print_SetFont(content[i])
-		 mess.SendSimpleMessage(opts.Sender.ID, fmt.Sprintf("%s", content[i]))
+	for i:=0 ; i < len(content) ; i++{
+		mess.SendSimpleMessage(opts.Sender.ID, fmt.Sprintf("%s",content[i]))
 	}
-	//
+
 	mess.SendSimpleMessage(opts.Sender.ID, fmt.Sprintf("你的id為:%s",opts.Sender.ID))
-
-
-	// fmt.Printf("%+v", resp)
 }
-//
-// func SendButton(PSID string){
-//
-// 	mq := messenger.MessageQuery{}
-// 	mq.RecipientID(PSID)
-// 	mq.Template(template.GenericTemplate {Title: "請告訴我們你想執行的動作",
-// 		Buttons: []template.Button{
-// 			template.Button{
-// 				Type:    template.ButtonTypePostback,
-// 				Payload: "post",
-// 				Title:   "請貼文給我",
-// 			},
-// 			template.Button{
-// 				Type:    template.ButtonTypeWebURL,
-// 				Title:   "連結註冊頁面",
-// 				URL:		 "140.115.153.185",
-// 			},
-// 		},
-// 	})
-// 	mess.SendMessage(mq)
-// }
