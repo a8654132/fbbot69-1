@@ -39,7 +39,7 @@ func Redis_IDtoMAC(ID string)(CONTENT []string){
 
 		binary, err2 := redis.Bytes(c.Do("GET", MAC))
 		if err2 != nil{
-			CONTENT =append(CONTENT,"錯誤:你沒有新資料")
+			CONTENT =append(CONTENT,"錯誤:你沒有新資料!")
 			return
 		}
 
@@ -54,6 +54,10 @@ func Redis_IDtoMAC(ID string)(CONTENT []string){
 				CONTENT  = append(CONTENT,user.CRAWLER[i-1].GOOGLE[j].CONTENT)
 				count ++
 			}
+		}
+		if CONTENT ==[]{
+			CONTENT =append(CONTENT,"錯誤:你沒有新資料")
+			return
 		}
 		return CONTENT
 
