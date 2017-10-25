@@ -16,5 +16,5 @@ func Print_SetFont(str string)(str_cov string){
 			// }
 		}
 	}
-	return
+	return str_cov
 }
