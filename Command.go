@@ -51,7 +51,7 @@ func Redis_IDtoMAC(ID string)(CONTENT []string){
 		for i:=len(user.CRAWLER);i>0 && count<3 ; i--{
 			for j:=0;j< len(user.CRAWLER[i-1].GOOGLE);j++{
 				// CONTENT = CONTENT+user.CRAWLER[i-1].GOOGLE[j].CONTENT+"\n\n"
-				CONTENT  = append(CONTENT,user.CRAWLER[i-1].GOOGLE[j].URL_NAME)
+				CONTENT  = append(CONTENT,user.CRAWLER[i-1].GOOGLE[j].CONTENT)
 				count ++
 			}
 		}
