@@ -55,9 +55,10 @@ func Redis_IDtoMAC(ID string)(CONTENT []string){
 				count ++
 			}
 		}
-		if CONTENT ==[]{
+
+		if len(CONTENT) == 0{
 			CONTENT =append(CONTENT,"錯誤:你沒有新資料")
-			return
+			return CONTENT
 		}
 		return CONTENT
 
