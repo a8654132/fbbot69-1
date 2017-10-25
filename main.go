@@ -31,9 +31,9 @@ func MessageReceived(event messenger.Event, opts messenger.MessageOpts, msg mess
 	stringid := fmt.Sprintf("%s",opts.Sender.ID)
 	content := Redis_IDtoMAC(stringid)
 
-	for i:=0 ; i < len(content) ; i++{
-		mess.SendSimpleMessage(opts.Sender.ID, fmt.Sprintf("%s",content[i]))
-	}
-
 	mess.SendSimpleMessage(opts.Sender.ID, fmt.Sprintf("你的id為:%s",opts.Sender.ID))
+
+		for i:=0 ; i < len(content) ; i++{
+			mess.SendSimpleMessage(opts.Sender.ID, fmt.Sprintf("%s",content[i]))
+		}
 }
