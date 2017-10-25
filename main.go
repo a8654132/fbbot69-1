@@ -8,7 +8,7 @@ import (
 	// "encoding/json"
 
 	"github.com/maciekmm/messenger-platform-go-sdk"
-	"github.com/maciekmm/messenger-platform-go-sdk/template"
+	// "github.com/maciekmm/messenger-platform-go-sdk/template"
 )
 
 var mess = &messenger.Messenger{}
