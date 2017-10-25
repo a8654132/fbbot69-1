@@ -4,10 +4,6 @@
 	"GodepVersion": "v79",
 	"Deps": [
 		{
-			"ImportPath": "github.com/djimenez/iconv-go",
-			"Rev": "8960e66bd3dacbc8773962b40eb82fc18c63c127"
-		},
-		{
 			"ImportPath": "github.com/garyburd/redigo/internal",
 			"Comment": "v1.1.0-10-g70e1b19",
 			"Rev": "70e1b1943d4fc9c56791abaa6f4d1e727b9ab925"
